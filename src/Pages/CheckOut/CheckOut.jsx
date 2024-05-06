@@ -25,7 +25,7 @@ const CheckOut = () => {
             price,
             img
         }
-        fetch('http://localhost:5000/bookings', {
+        fetch('https://car-doctor-server-one-delta.vercel.app/bookings', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

@@ -1,14 +1,13 @@
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation,  } from 'react-router-dom';
 import img from '../../assets/images/login/login.svg'
-import { useContext } from 'react';
-import { AuthContext } from '../../Providers/AuthProvider';
-import axios from 'axios';
+import useAuth from '../../Hooks/useAuth';
+// import axios from 'axios';
 
 const Login = () => {
-    const { signIn } = useContext(AuthContext);
+    const { signIn } = useAuth();
     const location = useLocation();
-    const navigate = useNavigate();
-    console.log(location);
+    // const navigate = useNavigate();
+    // console.log(location);
 
     const handleLogin = e => {
         e.preventDefault();
@@ -18,16 +17,16 @@ const Login = () => {
         signIn(email, password)
             .then(result => {
                 const loggedInUser = result.user;
-                console.log(loggedInUser);
-                const user = {email}
+                // console.log(loggedInUser);
+                // const user = {email}
                 // get access token
-                axios.post('http://localhost:5000/jwt', user, {withCredentials: true})
-                .then(res => {
-                    if(res.data.success){
-                        navigate(location?.state ? location?.state : '/')
-                    }
-                    console.log(res.data)
-                })
+                // axios.post('https://car-doctor-server-one-delta.vercel.app/jwt', user, {withCredentials: true})
+                // .then(res => {
+                //     if(res.data.success){
+                //         navigate(location?.state ? location?.state : '/')
+                //     }
+                //     console.log(res.data)
+                // })
 
             })
             .catch(error => console.error(error))
